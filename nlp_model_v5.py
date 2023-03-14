@@ -1,5 +1,5 @@
 import pandas as pd
-df = pd.read_csv('Consumer_Complaints.csv')
+df = pd.read_csv('C:\Users\M_Thiruveedula\Downloads\complaints.csv')
 df.head()
 
 df = df[pd.notnull(df['Consumer complaint narrative'])]
