@@ -65,7 +65,7 @@ category_to_id = dict(category_id_df.values)
 id_to_category = dict(category_id_df[['category_id', 'Product']].values)
 
 print(id_to_category)
-"""
+
 df['category_id'].unique()
 
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -152,7 +152,7 @@ X_train, X_test, y_train, y_test, indices_train, indices_test = train_test_split
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
-dump(model, 'model.joblib')
+dump(model, 'model_v2.joblib')
 from sklearn.metrics import confusion_matrix
 
 conf_mat = confusion_matrix(y_test, y_pred)
@@ -198,10 +198,10 @@ for text, predicted in zip(texts, predictions):
   print('"{}"'.format(text))
   print("  - Predicted as: '{}'".format(id_to_category[predicted]))
   print("")
-dump(tfidf, 'tfidf.joblib')
+dump(tfidf, 'tfidf_v2.joblib')
 
 from sklearn import metrics
 print(metrics.classification_report(y_test, y_pred, 
                                     target_names=df['Product'].unique()))
 
-"""
+

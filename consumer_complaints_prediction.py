@@ -4,7 +4,7 @@ from joblib import dump, load
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 
-model = load('model.joblib')
+model = load('model_v2.joblib')
 
 # Load test data from excel
 test_df = pd.read_excel('test_data.xlsx')
@@ -15,11 +15,11 @@ test_df = pd.read_excel('test_data.xlsx')
 #predictions = model.predict(text_features)
 #text="I got a call from somebody asking me to resolve pending debt that I owe to your company. However, as of today I don’t have anything left. But still your team keep harassing me."
 #testdata=np.array(text).reshape(1,-1)
-tfidf=load('tfidf.joblib')
+tfidf=load('tfidf_v2.joblib')
 #tfidf = TfidfVectorizer(sublinear_tf=True, min_df=5, norm='l2', encoding='latin-1', ngram_range=(1, 2), stop_words='english')
 #tfidf.fit_transform(test_df['body'])
 
-id_to_category={0: 'Credit card', 1: 'Debt collection', 2: 'Mortgage', 3: 'Vehicle loan or lease', 4: 'Other financial service'}
+id_to_category={0: 'Credit card', 1: 'Debt collection', 2: 'Mortgage', 3: 'Vehicle loan or lease', 4: 'Unclassified', 5: 'HR', 6: 'Finance', 7: 'IT Support', 8: 'People'}
 text_features = tfidf.transform(test_df['body'])
 predictions=model.predict(text_features)
 
